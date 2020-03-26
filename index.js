@@ -12,7 +12,8 @@ figlet("Random\nWallpaper\nDownloader", (_, res) =>
 
 const URL = "https://source.unsplash.com/random/3840x2160/?wallpaper",
   NAME = `${Date.now()}.jpeg`,
-  DIRECTORY = `${process.env.HOME}${process.env.IMG_DIR}/${NAME}`;
+  DIRECTORY = `${process.env.HOME}${process.env.IMG_DIR ||
+    "/Pictures"}/${NAME}`;
 
 request(URL)
   .pipe(fs.createWriteStream(NAME))
